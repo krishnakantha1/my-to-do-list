@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --border-color : rgb(29, 115, 185);
+    --text-color : rgb(0, 2, 121);
+}
+
+.container{
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: fit-content;
+    max-width: 100%;
+    height: fit-content;
+    padding: 0px 10px;
+    margin: 2px 3px;
+    background-color: rgb(102, 194, 252);
+    border-radius: 500px;
+    border: 2px solid var(--border-color);
+}
+
+.text{
+    padding: 5px 5px 5px 2px;
+    height: 100%;
+    
+    cursor: default;
+    color: var(--text-color);
+
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.removeBtn{
+    border: none;
+    background-color: transparent;
+    color: var(--border-color);
+    cursor: pointer;
+}

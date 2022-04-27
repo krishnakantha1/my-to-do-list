@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --dropdown-background: rgb(255, 255, 255);
+}
+
+.container{
+    font-size: 13px;
+    display: inline-block;
+    margin:5px 10px;
+    user-select: none;
+}
+
+.display{
+    border: 1px solid black;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    padding: 5px 10px;
+    background-color: var(--dropdown-background);
+    
+    cursor: pointer;
+}
+
+.display>p{
+    width: 100%;
+    padding-right: 1rem;
+}
+.display>button{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.list{
+    position: absolute;
+    display: none;
+    background-color: var(--dropdown-background);
+    border: 1px solid black;
+    border-radius: 2px;
+    z-index: 5;
+}
+
+
+.visible{
+    display: block !important;
+}
+
+.add{
+    display: flex;
+    margin-bottom: 5px;
+}
+
+.add>input{
+    width: 100%;
+    padding: 5px 10px 0px 10px;
+    margin: 0px 5px;
+    border:none;
+    outline: none;
+    border-bottom: 1px solid black;
+}
+.add>button{
+    background-color: transparent;
+    font-weight: 800;
+    font-size: 23px;
+    outline: none;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.add>button:hover{
+    color: white;
+    background-color: black;
+}

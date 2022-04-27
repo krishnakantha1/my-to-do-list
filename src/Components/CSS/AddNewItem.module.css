@@ -1,0 +1,67 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    position: relative;
+    width:100%;
+    padding:5vh 0px 3px 0px;
+}
+
+.form{
+    padding: 10px 0px;
+}
+
+select{
+    padding: 5px 10px;
+    margin: 5px 5px;
+}
+
+.tempOuterBoundery{
+    min-height: 20vh;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.batchContainer{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    width: 100%;
+    
+    padding: 5px 10px;
+    
+}
+
+.batchContainer input {
+    width: 0ch;
+    margin:0px;
+    padding: 0px;
+    border: none;
+    outline: none;
+}
+
+.batchContainer .inputSpan{
+    height: fit-content;
+    padding: 5px 10px;
+    margin: 2px 3px;
+    font-size: 16px;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.btnContainer{
+    padding:3px 5px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btnContainer button,  .btnContainer input{
+    padding: 5px 10px;
+    margin: 5px 5px;
+
+}

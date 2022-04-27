@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    --background-color : rgb(29, 115, 185);
+}
+
+.container{
+    position: relative;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+
+.selectedCategory{
+    background-color: var(--background-color);
+    color: white;
+}
+
+.container:hover{
+    background-color: var(--background-color);
+    color:white;
+}
+
+.container p{
+    width: 100%;
+}
+
+.container button{
+    padding: 0px 3px;
+    font-weight: 700;
+    outline: none;
+    border: none;
+    color: grey;
+    background-color: transparent;
+    cursor: pointer;
+    height:100%;
+}
+
+.container button:hover{
+    color: white;
+}
+
