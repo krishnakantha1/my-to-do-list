@@ -6,13 +6,11 @@ import DisplayList from "./Components/DisplayList"
 import AddNewItem from "./Components/AddNewItem"
 import axios from "axios";
 
-export var host = "http://localhost:8080/"
+export var host = "https://my-all-todo-list.herokuapp.com/"
 
 export const DataUseAndManipulateContext = createContext()
 
 const App = ()=>{
-
-    const DataUseAndManipulateContext = createContext()
 
     const [categories,setCategories] = useState([])
     const [todolist,setTodolist] = useState({})
@@ -34,8 +32,25 @@ const App = ()=>{
             return c===toBeDeletedCategory
         })
 
+        setTodolist((prev)=>{
+            delete prev[toBeDeletedCategory]
+            return {...prev}
+        })
+
         categories.splice(i,1)
         setCategories([...categories])
+    }
+
+    const modifyToDoLists = (category,newTodoList) => {
+        if(Object.keys(newTodoList).length===0){
+            delete todolist[category]
+            setTodolist({...todolist})
+            return
+        }
+
+        setTodolist((prev)=>(
+            {...prev,...newTodoList}
+        ))
     }
 
     
@@ -46,13 +61,11 @@ const App = ()=>{
                 categories,
                 setCategories,
                 todolist,
-                setTodolist
+                setTodolist,
+                deleteCategory,
+                modifyToDoLists
                 }}>
-                <AddNewItem 
-                    setTodolist = {setTodolist} 
-                    categories={categories} 
-                    setCategories={setCategories} 
-                    deleteCategory={deleteCategory}/>
+                <AddNewItem />
                 <DisplayList todolist = {todolist}/>
             </DataUseAndManipulateContext.Provider>
             </div>

@@ -1,13 +1,13 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 
 import styles from "./CSS/Category.module.css"
-
-var host = "http://localhost:8080/"
-
-const Category = ({category,selectedCategory,setSelectedCategory,setDrop,deleteCategory})=>{
+import {DataUseAndManipulateContext,host } from "../App";
 
 
+const Category = ({category,selectedCategory,setSelectedCategory,setDrop})=>{
+
+    const {deleteCategory} = useContext(DataUseAndManipulateContext)
 
     const handleCantegoryChange= ()=>{
         setSelectedCategory(category)

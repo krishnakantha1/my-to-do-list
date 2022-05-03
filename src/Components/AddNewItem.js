@@ -1,18 +1,17 @@
 import axios from "axios"
-import React,{ useRef,useState } from "react"
+import React,{ useContext, useRef,useState } from "react"
 import BatchItems from "./BatchItems"
 import CategoryDropDown from "./CategoryDropDown"
 
 import styles from "./CSS/AddNewItem.module.css"
+import {DataUseAndManipulateContext,host} from "../App"
 
 
-var host = "http://localhost:8080/"
+const AddNewItem = ()=>{
 
-
-const AddNewItem = ({setTodolist,categories,setCategories,deleteCategory})=>{
-
-
-    const [todoitem,setTD] = useState("")
+    const {setTodolist} = useContext(DataUseAndManipulateContext)
+    
+    const [newTodoitem,setTD] = useState("")
 
     const [selectedCategory,setSelectedCategory] = useState("DEFAULT")
 
@@ -27,7 +26,7 @@ const AddNewItem = ({setTodolist,categories,setCategories,deleteCategory})=>{
     const handleSubmit = async (e)=>{
         e.preventDefault();
 
-        if(todoitem!==""){
+        if(newTodoitem!==""){
             addItemToBatch();
             return
         }
@@ -69,11 +68,11 @@ const AddNewItem = ({setTodolist,categories,setCategories,deleteCategory})=>{
     }
 
     const addItemToBatch = ()=>{
-        if(todoitem==="") return
+        if(newTodoitem==="") return
 
         setTD("")
         setBatch((prev)=>(
-            [...prev,todoitem]
+            [...prev,newTodoitem]
         ))
     }
 
@@ -86,10 +85,6 @@ const AddNewItem = ({setTodolist,categories,setCategories,deleteCategory})=>{
 
     const focusOnInputField = (e)=>{
         inputRef.current.focus()
-    }
-
-    const getSelectedCatrgory = (category) => {
-
     }
 
 
@@ -106,19 +101,15 @@ const AddNewItem = ({setTodolist,categories,setCategories,deleteCategory})=>{
                     ))}
                 </select> */}
                 <CategoryDropDown 
-                    categories={categories} 
-                    setCategories={setCategories} 
                     selectedCategory={selectedCategory} 
-                    setSelectedCategory={setSelectedCategory}
-                    setTodolist={setTodolist}
-                    deleteCategory={deleteCategory}/>
+                    setSelectedCategory={setSelectedCategory}/>
                 <div className={styles.tempOuterBoundery} onClick={focusOnInputField}>
                     <div className={styles.batchContainer} >
                         {batch.map((item,i)=>{
                             return <BatchItems key={i} item={item} index={i} removeItemFromBatch={removeItemFromBatch}/>
                         })}
-                        <span className={styles.inputSpan}>{todoitem}</span>
-                        <input ref={inputRef} type="text" value={todoitem} onChange={handleChange} name="todoitem"/>
+                        <span className={styles.inputSpan}>{newTodoitem}</span>
+                        <input ref={inputRef} type="text" value={newTodoitem} onChange={handleChange} name="todoitem"/>
                     </div> 
                 </div>
                 <div className={styles.btnContainer}>

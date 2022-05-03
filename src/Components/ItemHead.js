@@ -17,7 +17,7 @@ const ItemHead = ({header,todos})=>{
                 <button>{!drop && ("▼")}{drop && ("▲")}</button>
             </div>
             <div className={`${styles.listContainer} ${drop?styles.show:styles.hide}`}>
-                <ItemList todos = {todos} display = {drop}/>
+                <ItemList todos = {todos} category={header} display = {drop}/>
             </div>
         </div>
     )

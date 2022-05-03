@@ -1,14 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Category from "./Category";
 
 import styles from "./CSS/CategoryDropDown.module.css"
+import {DataUseAndManipulateContext,host} from "../App"
 
 
-var host = "http://localhost:8080/"
 
+const CategoryDropDown = ({selectedCategory,setSelectedCategory}) => {
 
-const CategoryDropDown = ({categories,setCategories,selectedCategory,setSelectedCategory,setTodolist,deleteCategory}) => {
+    const {categories,setCategories} = useContext(DataUseAndManipulateContext)
 
     const [drop,setDrop] = useState(false)
 
@@ -23,7 +24,7 @@ const CategoryDropDown = ({categories,setCategories,selectedCategory,setSelected
     }
 
     const requestToAddCategory = async (e)=>{
-        if(newCategory.length==0){
+        if(newCategory.length===0){
             return
         }
 
@@ -57,13 +58,11 @@ const CategoryDropDown = ({categories,setCategories,selectedCategory,setSelected
              <div className={`${styles.list} ${drop?styles.visible:""}`}>
                 {categories.map((cat,i)=>(
                         <Category 
-                            category={cat} 
                             key={i} 
+                            category={cat} 
                             setSelectedCategory={setSelectedCategory} 
                             selectedCategory={selectedCategory}
-                            setDrop={setDrop}
-                            setTodolist={setTodolist}
-                            deleteCategory={deleteCategory}/>
+                            setDrop={setDrop}/>
                     ))}
                 <div className={styles.add}>
                     <input type="text" placeholder="Add New Category" value={newCategory} onChange={handleTextChange}/>
