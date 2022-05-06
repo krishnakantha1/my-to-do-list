@@ -80,9 +80,11 @@ const AddNewItem = ()=>{
     const addItemToBatch = ()=>{
         if(newTodoitem==="") return
 
+        var tempHolder = newTodoitem
+
         setTD("")
         setBatch((prev)=>(
-            [...prev,newTodoitem]
+            [...prev,tempHolder]
         ))
     }
 
