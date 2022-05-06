@@ -4,6 +4,10 @@ import styles from "./CSS/Item.module.css";
 import {DataUseAndManipulateContext,host} from "../App"
 import axios from "axios";
 
+import trash from "./static/trash.png"
+import strikethrough from "./static/strikethrough.png"
+import T from "./static/T.png"
+
 //Individual item on the to do list
 const Item = ({item,category}) => {
     const {modifyToDoLists} = useContext(DataUseAndManipulateContext)
@@ -59,8 +63,17 @@ const Item = ({item,category}) => {
     return (
         <div className={`${styles.container} ${loading?styles.loading:""}`}>
             <p className={`${item.complete?styles.cut:""}`}>{item.name}</p>
-            <button type="button" onClick={handleComplete}>C</button>
-            <button type="button" onClick={handleDelete}>D</button>
+            <button type="button" onClick={handleComplete}>
+                {
+                    item.complete?
+                    (<img alt="unstrike through" src={T}></img>):
+                    (<img alt="strike through" src={strikethrough}></img>)
+                }
+                
+            </button>
+            <button type="button" onClick={handleDelete}>
+                <img alt="trash" src={trash}></img>
+            </button>
         </div>
     )
 }

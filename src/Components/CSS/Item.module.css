@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: border-box;
     --border-color : rgb(29, 115, 185);
+    --background-color : rgb(29, 115, 185);
 }
 
 .container {
@@ -44,10 +45,24 @@
 }
 
 .container button{
-    padding: 1rem;
+    position: relative;
+    padding: .3rem;
     outline: none;
     border: none;
 
+}
+
+.container button img {
+    width: 25px;
+    height: 25px;
+}
+
+.container button:hover{
+    background-color: var(--background-color);
+}
+
+.container button:hover img{
+    filter: invert(100%);
 }
 
 .cut{

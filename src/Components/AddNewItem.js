@@ -17,7 +17,17 @@ const AddNewItem = ()=>{
 
     const [batch,setBatch] = useState([])
 
+    const [textAreaOnFocus,setTAOF] = useState(false)
+
     const inputRef = useRef()
+
+    const focused = ()=>{
+        setTAOF(true)
+    }
+
+    const unFocused = ()=>{
+        setTAOF(false)
+    }
 
     const handleChange = (e) =>{
         setTD(e.target.value)
@@ -92,18 +102,14 @@ const AddNewItem = ()=>{
         <div className={styles.container}>
             <form className={styles.form} onSubmit={handleSubmit} onKeyDown={handleEnterPressSubmit}>
                 <label htmlFor="tag">Select A Category For The Items </label>
-                {/* <select value={taskDetails.tag}
-                    onChange={handleChange}
-                    name="tag"
-                >
-                    {categories.map((value,i)=>(
-                        <option key={i}>{value}</option>
-                    ))}
-                </select> */}
                 <CategoryDropDown 
                     selectedCategory={selectedCategory} 
                     setSelectedCategory={setSelectedCategory}/>
-                <div className={styles.tempOuterBoundery} onClick={focusOnInputField}>
+
+                <div className={`${styles.tempOuterBoundery} ${textAreaOnFocus?styles.textAreaBoundy:""}`} 
+                    onClick={focusOnInputField} 
+                    onFocus={focused} 
+                    onBlur={unFocused}>
                     <div className={styles.batchContainer} >
                         {batch.map((item,i)=>{
                             return <BatchItems key={i} item={item} index={i} removeItemFromBatch={removeItemFromBatch}/>
