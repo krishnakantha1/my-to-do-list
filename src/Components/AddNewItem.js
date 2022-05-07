@@ -30,7 +30,9 @@ const AddNewItem = ()=>{
     }
 
     const handleChange = (e) =>{
-        setTD(e.target.value)
+        setTD((prev)=>  {
+          return e.target.value
+        })
     }
 
     const handleSubmit = async (e)=>{
@@ -117,8 +119,26 @@ const AddNewItem = ()=>{
                             return <BatchItems key={i} item={item} index={i} removeItemFromBatch={removeItemFromBatch}/>
                         })}
                         <span className={styles.inputSpan}>{newTodoitem}</span>
-                        <input ref={inputRef} type="text" value={newTodoitem} onChange={handleChange} name="todoitem"/>
-                    </div> 
+                        <input 
+                            // style={{
+                            //     width: `${newTodoitem.length+1}ch`
+                            // }}
+                            ref={inputRef} 
+                            type="text" 
+                            value={newTodoitem} 
+                            onChange={handleChange} 
+                            name="todoitem"/>
+                    </div>
+                    {/* <div style={{
+                        position: "absolute",
+                        bottom:"0",
+                        left:"0",
+                        width:"100%",
+                        background:"red",
+                        height:"16px",
+
+                    }}>
+                    </div>  */}
                 </div>
                 <div className={styles.btnContainer}>
                     <button type="button" onClick={addItemToBatch}>Add</button>
