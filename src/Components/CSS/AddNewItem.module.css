@@ -42,7 +42,8 @@ select{
 }
 
 .batchContainer input {
-    width: 0ch;
+    width: 1ch;
+    opacity: 0;
     padding: 0;
     margin: 0;
     border: none;

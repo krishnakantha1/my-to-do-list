@@ -30,9 +30,7 @@ const AddNewItem = ()=>{
     }
 
     const handleChange = (e) =>{
-        setTD((prev)=>  {
-          return e.target.value
-        })
+        setTD(e.target.value)
     }
 
     const handleSubmit = async (e)=>{
@@ -82,18 +80,21 @@ const AddNewItem = ()=>{
     const addItemToBatch = ()=>{
         if(newTodoitem==="") return
 
-        var tempHolder = newTodoitem
-
         setTD("")
         setBatch((prev)=>(
-            [...prev,tempHolder]
+            [...prev,newTodoitem]
         ))
+        
     }
 
     const removeItemFromBatch = (index) => {
+        
         setBatch(prev=>{
-            prev.splice(index,1)
-            return [...prev]
+            var arr = [...prev]
+
+            arr.splice(index,1)
+
+            return arr
         })
     }
 
@@ -120,25 +121,12 @@ const AddNewItem = ()=>{
                         })}
                         <span className={styles.inputSpan}>{newTodoitem}</span>
                         <input 
-                            // style={{
-                            //     width: `${newTodoitem.length+1}ch`
-                            // }}
                             ref={inputRef} 
                             type="text" 
                             value={newTodoitem} 
                             onChange={handleChange} 
                             name="todoitem"/>
                     </div>
-                    {/* <div style={{
-                        position: "absolute",
-                        bottom:"0",
-                        left:"0",
-                        width:"100%",
-                        background:"red",
-                        height:"16px",
-
-                    }}>
-                    </div>  */}
                 </div>
                 <div className={styles.btnContainer}>
                     <button type="button" onClick={addItemToBatch}>Add</button>
