@@ -30,6 +30,8 @@ const AddNewItem = ()=>{
     }
 
     const handleChange = (e) =>{
+        if(e.target.value.length>30) return
+
         setTD(e.target.value)
     }
 
@@ -125,7 +127,13 @@ const AddNewItem = ()=>{
                             type="text" 
                             value={newTodoitem} 
                             onChange={handleChange} 
-                            name="todoitem"/>
+                            name="todoitem"
+                            autoComplete="off"/>
+                    </div>
+                    <div className={styles.itemLengthContianer}>
+                        <p 
+                            className={styles.itemLength}
+                            style={ newTodoitem.length===30?{color:"var(--background-color)"}:{}}>item length limit: {newTodoitem.length}/30</p>
                     </div>
                 </div>
                 <div className={styles.btnContainer}>

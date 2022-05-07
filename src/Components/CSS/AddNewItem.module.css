@@ -21,6 +21,8 @@ select{
 }
 
 .tempOuterBoundery{
+    display: flex;
+    flex-direction: column;
     min-height: 20vh;
     border: 1px solid black;
     border-radius: 10px;
@@ -39,6 +41,21 @@ select{
     
     padding: 5px 10px;
     
+}
+
+.itemLengthContianer{
+    display: flex;
+    justify-content: flex-end;
+
+    margin-top: auto;
+}
+
+.itemLengthContianer .itemLength{
+    font-weight: 550;
+    color: rgb(169, 169, 169);
+    font-size: 13px;
+    margin: 3px;
+    user-select: none;
 }
 
 .batchContainer input {
